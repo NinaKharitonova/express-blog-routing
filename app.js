@@ -1,42 +1,14 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(express.static("public"));
 
-//Creiamo un array dove inserire una lista di almeno 5 post
-const posts = [
-  {
-    title: "Ciambellone",
-    content: "Descrizione del piatto",
-    img: "/images/ciambellone.jpeg",
-    tags: [],
-  },
-  {
-    title: "Cracker Barbabietola",
-    content: "Descrizione del piatto",
-    img: "/images/cracker_barbabietola.jpeg",
-    tags: [],
-  },
-  {
-    title: "Pane fritto dolce",
-    content: "Descrizione del piatto",
-    img: "/images/pane_fritto_dolce.jpeg",
-    tags: [],
-  },
-  {
-    title: "Pasta barbabietola",
-    content: "Descrizione del piatto",
-    img: "/images/pasta_barbabietola.jpeg",
-    tags: [],
-  },
-  {
-    title: "Torta paesana",
-    content: "Descrizione del piatto",
-    img: "/images/torta_paesana.jpeg",
-    tags: [],
-  },
-];
+// Importo il router dei post
+const postsRouter = require("./routers/routers/posts");
+
+// Uso il router con il prefisso /posts
+app.use("/posts", postsRouter);
 
 //Creiamo il progetto base con una rotta
 app.get("/", (req, res) => {
